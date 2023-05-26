@@ -10,6 +10,8 @@ export default function App() {
       <div className="header">
         <div className="container">
           <h5>Where in the world</h5>
+          <span className="icon">🌚</span>
+          Mode
         </div>
       </div>
       <div className="container">

@@ -1,0 +1,10 @@
+.form__field {
+    position: relative;
+    display: inline-block;
+}
+
+.icon {
+    position: absolute;
+    right: 0;
+    margin: 8px;
+}

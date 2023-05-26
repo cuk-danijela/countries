@@ -5,6 +5,8 @@ import SearchInput from "../SearchInput/SearchInput";
 import FilterCountry from "../FilterCountry/FilterCountry";
 
 import { Link } from "react-router-dom";
+import { Blocks } from 'react-loader-spinner'
+
 
 const Countries = () => {
     const [countries, setCountries] = useState([]);
@@ -68,12 +70,19 @@ const Countries = () => {
             </div>
 
             <div className="country__bottom">
-                {isLoading && !error && <h4>Loading........</h4>}
+                {isLoading && !error && <Blocks
+                    visible={true}
+                    height="80"
+                    width="80"
+                    ariaLabel="blocks-loading"
+                    wrapperStyle={{}}
+                    wrapperClass="blocks-wrapper"
+                />}
                 {error && !isLoading && <h4>{error}</h4>}
 
-                {countries?.map((country) => (
+                {countries?.map((country, index) => (
                     <Link to={`/country/${country.name.common}`}>
-                        <div className="country__card">
+                        <div key={index} className="country__card">
                             <div className="country__img">
                                 <img src={country.flags.png} alt="" />
                             </div>

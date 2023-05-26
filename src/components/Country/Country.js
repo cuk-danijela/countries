@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiURL } from "../../util/api";
 import { Link } from "react-router-dom";
+import { Blocks } from 'react-loader-spinner'
+import { BsArrowLeft } from "react-icons/bs";
+
 
 const Country = () => {
     const [country, setCountry] = useState([]);
@@ -9,7 +12,7 @@ const Country = () => {
     const [error, setError] = useState("");
 
     const { countryName } = useParams();
-
+    
     const borders = country.map((country) => country.borders);
 
     useEffect(() => {
@@ -32,12 +35,20 @@ const Country = () => {
 
     return (
         <div className="country__info__wrapper">
-            <button>
-                <Link to="/">Back</Link>
-            </button>
 
-            {isLoading && !error && <h4>Loading........</h4>}
-            {error && !isLoading && { error }}
+            <Link to="/"><button><BsArrowLeft /> Back</button></Link>
+            <div>
+                {isLoading && !error && <Blocks
+                    visible={true}
+                    height="80"
+                    width="80"
+                    ariaLabel="blocks-loading"
+                    wrapperStyle={{}}
+                    wrapperClass="blocks-wrapper"
+                />}
+                {error && !isLoading && { error }}
+            </div>
+
 
             {country?.map((country, index) => (
                 <div className="country__info__container" key={index}>
@@ -49,6 +60,9 @@ const Country = () => {
                         <h3>{country.name.common}</h3>
 
                         <div className="country__info-left">
+                            <h5>Native name: 
+                                {country.name.official}
+                                </h5>
                             <h5>
                                 Population:{" "}
                                 <span>
@@ -65,9 +79,22 @@ const Country = () => {
                                 Capital: <span>{country.capital}</span>
                             </h5>
                         </div>
+                     
+                        <h5><span>Border Countries: {borders}</span></h5>
                     </div>
                 </div>
             ))}
+            <div className="country__info-right">
+                <h5>Top level domain: <span></span></h5>
+                <h5>
+                    Currencies:<span></span>
+                </h5>
+                <h5>
+                    Languages: <span>
+                        {country.languages?.map((lang, index) => (<span key={index} className="card-tags">{lang}</span>))}
+                    </span>
+                </h5>
+            </div>
         </div>
     );
 };

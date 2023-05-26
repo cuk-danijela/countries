@@ -151,14 +151,14 @@ a {
   margin-bottom: 30px;
 }
 
-.country__info-left h5 {
+.country__info-left h5, .country__info-right h5 {
   color: #fff;
   font-size: 0.9rem;
   font-weight: 400;
   margin-bottom: 10px;
 }
 
-.country__info-left h5 span {
+.country__info-left h5 span, .country__info-right h5 span {
   color: #fff;
   opacity: 85%;
   font-weight: 400;
