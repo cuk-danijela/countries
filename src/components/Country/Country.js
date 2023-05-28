@@ -12,13 +12,16 @@ const Country = () => {
     const [error, setError] = useState("");
 
     const { countryName } = useParams();
-    
-    const borders = country.map((country) => country.borders);
+
+    const borders = country[0]?.borders || [];
+    const currencies = country.length > 0 ? country[0].currencies : null;
+    const languages = country.length > 0 ? country[0].languages : null;
 
     useEffect(() => {
         const getCountryByName = async () => {
             try {
                 const res = await fetch(`${apiURL}/name/${countryName}`);
+                   
                 if (!res.ok) throw new Error("Could not found!");
                 const data = await res.json();
                 setCountry(data);
@@ -46,7 +49,7 @@ const Country = () => {
                     wrapperStyle={{}}
                     wrapperClass="blocks-wrapper"
                 />}
-                {error && !isLoading && { error }}
+                {error && !isLoading && <h4>{error}</h4>}
             </div>
 
 
@@ -60,9 +63,9 @@ const Country = () => {
                         <h3>{country.name.common}</h3>
 
                         <div className="country__info-left">
-                            <h5>Native name: 
+                            <h5>Native name:{" "}
                                 {country.name.official}
-                                </h5>
+                            </h5>
                             <h5>
                                 Population:{" "}
                                 <span>
@@ -70,31 +73,68 @@ const Country = () => {
                                 </span>
                             </h5>
                             <h5>
-                                Region: <span>{country.region}</span>
+                                Region:{" "}
+                                <span>{country.region}</span>
                             </h5>
                             <h5>
-                                Sub Region: <span>{country.subregion}</span>
+                                Sub Region:{" "}
+                                <span>{country.subregion}</span>
                             </h5>
                             <h5>
-                                Capital: <span>{country.capital}</span>
+                                Capital:{" "}
+                                <span>{country.capital}</span>
+                            </h5>
+                            {borders.length > 0 ? (
+                                <h5>
+                                    Border Countries:
+                                    {borders.map((border, index) => (
+                                        <span key={index}>{border}</span>
+                                    ))}
+                                </h5>
+                            ) : (
+                                <h5>No border countries</h5>
+                            )}
+                        </div>
+
+                        <div className="country__info-right">
+                            <h5>Top level domain: {" "}
+                                <span>{country[0]?.tld?.[0]}</span>
+                            </h5>
+                            <h5>
+                                Currencies: {" "}
+                                {currencies ? (
+                                    <ul>
+                                        {Object.entries(currencies).map(([key, value]) => (
+                                            <li key={key}>
+                                                <strong>{key}: </strong>
+                                                {value.name} ({value.symbol})
+                                            </li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p>No currency information available.</p>
+                                )}
+                            </h5>
+                            <h5>
+                                Languages: {" "}
+                                {languages ? (
+                                    <ul>
+                                        {Object.entries(languages).map(([key, value]) => (
+                                            <li key={key}>
+                                                <strong>{key}: </strong>
+                                                {value}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p>No language information available.</p>
+                                )}
                             </h5>
                         </div>
-                     
-                        <h5><span>Border Countries: {borders}</span></h5>
                     </div>
                 </div>
             ))}
-            <div className="country__info-right">
-                <h5>Top level domain: <span></span></h5>
-                <h5>
-                    Currencies:<span></span>
-                </h5>
-                <h5>
-                    Languages: <span>
-                        {country.languages?.map((lang, index) => (<span key={index} className="card-tags">{lang}</span>))}
-                    </span>
-                </h5>
-            </div>
+           
         </div>
     );
 };

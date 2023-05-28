@@ -81,7 +81,7 @@ const Countries = () => {
                 {error && !isLoading && <h4>{error}</h4>}
 
                 {countries?.map((country, index) => (
-                    <Link to={`/country/${country.name.common}`}>
+                    <Link to={`/country/${country.name.common}`} key={country.name.common}>
                         <div key={index} className="country__card">
                             <div className="country__img">
                                 <img src={country.flags.png} alt="" />

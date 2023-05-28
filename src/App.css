@@ -34,6 +34,21 @@ body {
   color: #fff;
 }
 
+.dark {
+  background-color: hsl(207, 26%, 17%);
+  color: hsl(0, 0%, 100%);
+}
+
+/* Example styles for light mode */
+.light {
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(200, 15%, 8%);
+}
+
+
+ /* - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)  */
+
+
 .country__bottom {
   display: flex;
   flex-wrap: wrap;
