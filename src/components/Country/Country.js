@@ -4,7 +4,7 @@ import { apiURL } from "../../util/api";
 import { Link } from "react-router-dom";
 import { Blocks } from 'react-loader-spinner'
 import { BsArrowLeft } from "react-icons/bs";
-
+import './Country.css'
 
 const Country = () => {
     const [country, setCountry] = useState([]);
@@ -54,17 +54,17 @@ const Country = () => {
 
 
             {country?.map((country, index) => (
-                <div className="country__info__container" key={index}>
-                    <div className="country__info-img">
+                <div className="row" key={index}>
+                    <div className="col-lg-4 col-md-6">
                         <img src={country.flags.png} alt="" />
                     </div>
 
-                    <div className="country__info">
-                        <h3>{country.name.common}</h3>
+                    <div className="country__info col-lg-8 col-md-6">
+                        <h2>{country.name.common}</h2>
 
                         <div className="country__info-left">
                             <h5>Native name:{" "}
-                                {country.name.official}
+                                <span>{country.name.official}</span>
                             </h5>
                             <h5>
                                 Population:{" "}
@@ -84,53 +84,64 @@ const Country = () => {
                                 Capital:{" "}
                                 <span>{country.capital}</span>
                             </h5>
-                            {borders.length > 0 ? (
-                                <h5>
-                                    Border Countries:
-                                    {borders.map((border, index) => (
-                                        <span key={index}>{border}</span>
-                                    ))}
-                                </h5>
-                            ) : (
-                                <h5>No border countries</h5>
-                            )}
+                           
                         </div>
 
                         <div className="country__info-right">
-                            <h5>Top level domain: {" "}
-                                <span>{country[0]?.tld?.[0]}</span>
+                            <h5>
+                                Top level domain: {" "}
+                                {country[0]?.tld?.[0] ? (
+                                    <span>{country[0]?.tld?.[0]}</span>
+                                ) : (
+                                    <span>No top-level domain available.</span>
+                                )}
                             </h5>
                             <h5>
                                 Currencies: {" "}
                                 {currencies ? (
-                                    <ul>
+                                    <>
                                         {Object.entries(currencies).map(([key, value]) => (
-                                            <li key={key}>
-                                                <strong>{key}: </strong>
-                                                {value.name} ({value.symbol})
-                                            </li>
+                                            <React.Fragment key={key}>
+                                                {index > 0 && ", "}
+                                                <span>
+                                                    {value.name} ({value.symbol})
+                                                </span>
+                                            </React.Fragment>
                                         ))}
-                                    </ul>
+                                    </>
                                 ) : (
-                                    <p>No currency information available.</p>
+                                    <span>No currency information available.</span>
                                 )}
                             </h5>
                             <h5>
                                 Languages: {" "}
                                 {languages ? (
-                                    <ul>
-                                        {Object.entries(languages).map(([key, value]) => (
-                                            <li key={key}>
-                                                <strong>{key}: </strong>
-                                                {value}
-                                            </li>
+                                    <>
+                                        {Object.entries(languages).map(([key, value], index) => (
+                                            <React.Fragment key={key}>
+                                                {index > 0 && ", "}
+                                                <span>{value}</span>
+                                            </React.Fragment>
                                         ))}
-                                    </ul>
+                                    </>
                                 ) : (
-                                    <p>No language information available.</p>
+                                    <span>No language information available.</span>
                                 )}
                             </h5>
                         </div>
+                        
+                    </div>
+                    <div className="country__borders col-lg-8 col-md-6">
+                        {borders.length > 0 ? (
+                            <h5>
+                                Border Countries: {" "}
+                                {borders.map((border, index) => (
+                                    <span key={index}>{border}</span>
+                                ))}
+                            </h5>
+                        ) : (
+                            <h5>No border countries</h5>
+                        )}
                     </div>
                 </div>
             ))}

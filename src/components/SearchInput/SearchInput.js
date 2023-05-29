@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BsSearch } from "react-icons/bs";
 import "./SearchInput.css"
 
 
@@ -12,13 +13,13 @@ const SearchInput = ({ onSearch }) => {
 
     return (
         <form className="form__field" onSubmit={submitHandler}>
+            <BsSearch className="icon"/>
             <input
                 type="text"
-                placeholder="Search countries here"
+                placeholder="Search for a country ..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
             />
-            <span className="icon">🔍</span>
         </form>
     );
 };

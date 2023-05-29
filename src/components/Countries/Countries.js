@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { apiURL } from "../../util/api";
-
 import SearchInput from "../SearchInput/SearchInput";
 import FilterCountry from "../FilterCountry/FilterCountry";
-
 import { Link } from "react-router-dom";
 import { Blocks } from 'react-loader-spinner'
-
+import './Countries.css'
 
 const Countries = () => {
     const [countries, setCountries] = useState([]);
@@ -80,26 +78,30 @@ const Countries = () => {
                 />}
                 {error && !isLoading && <h4>{error}</h4>}
 
-                {countries?.map((country, index) => (
-                    <Link to={`/country/${country.name.common}`} key={country.name.common}>
-                        <div key={index} className="country__card">
-                            <div className="country__img">
-                                <img src={country.flags.png} alt="" />
-                            </div>
+                <div className="row">
+                    {countries?.map((country, index) => (
+                        <div className="col-lg-3 col-md-6 mb-4" key={country.name.common}>
+                            <Link to={`/country/${country.name.common}`} >
+                                <div key={index} className="country__card">
+                                    <div className="country__img">
+                                        <img src={country.flags.png} alt="" />
+                                    </div>
 
-                            <div className="country__data">
-                                <h3>{country.name.common}</h3>
-                                <h6>
-                                    {" "}
-                                    Population:{" "}
-                                    {new Intl.NumberFormat().format(country.population)}
-                                </h6>
-                                <h6> Region: {country.region}</h6>
-                                <h6>Capital: {country.capital}</h6>
-                            </div>
+                                    <div className="country__data">
+                                        <h3>{country.name.common}</h3>
+                                        <h6>
+                                            Population:{" "}
+                                            {new Intl.NumberFormat().format(country.population)}
+                                        </h6>
+                                        <h6> Region: {country.region}</h6>
+                                        <h6>Capital: {country.capital}</h6>
+                                    </div>
+                                </div>
+                            </Link>
                         </div>
-                    </Link>
-                ))}
+                    ))}
+                </div>
+
             </div>
         </div>
     );

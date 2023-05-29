@@ -16,16 +16,15 @@ export default function App() {
 
   return (
     <>
-      <div className={`app ${isDarkMode ? "dark" : "light"}`}>
+      <div className={`${isDarkMode ? "light" : "dark"}`}>
+        <div className="header">
+          <h4>Where in the world?</h4>
+          <span onClick={toggleMode}>
+            {isDarkMode ? <BsMoonStars /> : <BsMoonStarsFill />}
+            {isDarkMode ? " Dark Mode" : " Ligth Mode"}
+          </span>
+        </div>
         <div className="container">
-          <div className="header">
-            <h5>Where in the world?</h5>
-            <span onClick={toggleMode}>
-              {isDarkMode ? <BsMoonStars /> : <BsMoonStarsFill />}
-              {isDarkMode ? "Light Mode" : "Dark Mode"}
-            </span>
-          </div>
-
           <Router>
             <Routes>
               <Route path='/' element={<Countries />} />

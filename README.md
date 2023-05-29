@@ -1,11 +1,3 @@
-
-- Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
-
-
-
-- White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
-
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

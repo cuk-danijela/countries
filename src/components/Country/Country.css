@@ -1,0 +1,50 @@
+button {
+    padding: 10px 25px;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 120px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.country__info h2 {
+    color: var(--text-color);
+    margin-bottom: 30px;
+}
+.country__info-left{
+float: left;
+}
+.country__info-right{
+    float: right;
+}
+.country__info-left h5,
+.country__info-right h5,
+.country__borders h5 {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.country__info-left h5 span,
+.country__info-right h5 span {
+    color: var(--text-color);
+    opacity: 85%;
+    font-weight: 400;
+}
+
+.country__borders span {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+            padding: 5px 20px;
+            margin: 0 10px;
+}
