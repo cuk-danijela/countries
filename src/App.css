@@ -37,6 +37,7 @@
   color: var(--text-color);
 }
 
-header span {
+.switch__mode {
   color: var(--text-color);
+  cursor: pointer;
 }

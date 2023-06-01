@@ -19,7 +19,7 @@ export default function App() {
       <div className={`${isDarkMode ? "light" : "dark"}`}>
         <div className="header">
           <h4>Where in the world?</h4>
-          <span onClick={toggleMode}>
+          <span className="switch__mode" onClick={toggleMode}>
             {isDarkMode ? <BsMoonStars /> : <BsMoonStarsFill />}
             {isDarkMode ? " Dark Mode" : " Ligth Mode"}
           </span>
