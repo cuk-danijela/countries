@@ -68,6 +68,7 @@ const Countries = () => {
             </div>
 
             <div className="country__bottom">
+
                 {isLoading && !error && <Blocks
                     visible={true}
                     height="80"
@@ -83,8 +84,7 @@ const Countries = () => {
                         <div className="col-lg-3 col-md-6 mb-4" key={country.name.common}>
                             <Link to={`/country/${country.name.common}`} >
                                 <div key={index} className="country__card">
-                                    <div className="country__img">
-                                        <img src={country.flags.png} alt="" />
+                                    <div className="country__img" style={{ backgroundImage: `url(${country.flags.png})` }}>
                                     </div>
 
                                     <div className="country__data">
@@ -94,7 +94,15 @@ const Countries = () => {
                                             {new Intl.NumberFormat().format(country.population)}
                                         </h6>
                                         <h6> Region: {country.region}</h6>
-                                        <h6>Capital: {country.capital}</h6>
+                                        {country.capital ? (
+                                            <h6>Capital: {country.capital}</h6>
+                                        ) : (
+                                            <h6>
+                                                Capital:{" "}
+                                                <span>No capital information available.</span>
+                                            </h6>
+                                        )}
+
                                     </div>
                                 </div>
                             </Link>

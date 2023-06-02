@@ -21,7 +21,7 @@ const Country = () => {
         const getCountryByName = async () => {
             try {
                 const res = await fetch(`${apiURL}/name/${countryName}`);
-                   
+
                 if (!res.ok) throw new Error("Could not found!");
                 const data = await res.json();
                 setCountry(data);
@@ -55,36 +55,78 @@ const Country = () => {
 
             {country?.map((country, index) => (
                 <div className="row" key={index}>
-                    <div className="col-lg-4 col-md-6">
-                        <img src={country.flags.png} alt="" />
+                    <div className="col-lg-3 col-md-6 country__info-img" style={{ backgroundImage: `url(${country.flags.png})` }}>
                     </div>
 
-                    <div className="country__info col-lg-8 col-md-6">
+                    <div className="country__info col-lg-9 col-md-6">
                         <h2>{country.name.common}</h2>
 
                         <div className="country__info-left">
-                            <h5>Native name:{" "}
-                                <span>{country.name.official}</span>
-                            </h5>
-                            <h5>
-                                Population:{" "}
-                                <span>
-                                    {new Intl.NumberFormat().format(country.population)}
-                                </span>
-                            </h5>
-                            <h5>
-                                Region:{" "}
-                                <span>{country.region}</span>
-                            </h5>
-                            <h5>
-                                Sub Region:{" "}
-                                <span>{country.subregion}</span>
-                            </h5>
-                            <h5>
-                                Capital:{" "}
-                                <span>{country.capital}</span>
-                            </h5>
-                           
+
+                            {country.name.official ? (
+                                <h5>Native name:{" "}
+                                    <span>{country.name.official}</span>
+                                </h5>
+                            ) : (
+                                <h5>
+                                    Native name:{" "}
+                                    <span>No native name information available.</span>
+                                </h5>
+                            )}
+
+
+                            {country.population ? (
+                                <h5>
+                                    Population:{" "}
+                                    <span>
+                                        {new Intl.NumberFormat().format(country.population)}
+                                    </span>
+                                </h5>
+                            ) : (
+                                <h5>
+                                    Population:{" "}
+                                    <span>No population information available.</span>
+                                </h5>
+                            )}
+
+
+                            {country.region ? (
+                                <h5>
+                                    Region:{" "}
+                                    <span>{country.region}</span>
+                                </h5>
+                            ) : (
+                                <h5>
+                                    Region:{" "}
+                                    <span>No region information available.</span>
+                                </h5>
+                            )}
+
+                            {country.subregion ? (
+                                <h5>
+                                    Sub Region:{" "}
+                                    <span>{country.subregion}</span>
+                                </h5>
+                            ) : (
+                                <h5>
+                                    Sub Region:{" "}
+                                    <span>No sub region information available.</span>
+                                </h5>
+                            )}
+
+                            {country.capital ? (
+                                <h5>
+                                    Capital:{" "}
+                                    <span>{country.capital}</span>
+                                </h5>
+                            ) : (
+                                <h5>
+                                    Capital:{" "}
+                                    <span>No capital information available.</span>
+                                </h5>
+                            )}
+
+
                         </div>
 
                         <div className="country__info-right">
@@ -93,7 +135,7 @@ const Country = () => {
                                 {country[0]?.tld?.[0] ? (
                                     <span>{country[0]?.tld?.[0]}</span>
                                 ) : (
-                                    <span>No top-level domain available.</span>
+                                    <span>No domain available.</span>
                                 )}
                             </h5>
                             <h5>
@@ -129,23 +171,25 @@ const Country = () => {
                                 )}
                             </h5>
                         </div>
-                        
+
                     </div>
-                    <div className="country__borders col-lg-8 col-md-6">
+                    <div className="country__borders col-lg-12 col-md-12">
                         {borders.length > 0 ? (
-                            <h5>
-                                Border Countries: {" "}
-                                {borders.map((border, index) => (
-                                    <span key={index}>{border}</span>
-                                ))}
-                            </h5>
+                            <>
+                                <h5>Border Countries:</h5>
+                                <div className="border__countries">
+                                    {borders.map((border, index) => (
+                                        <span key={index}>{border}</span>
+                                    ))}
+                                </div>
+                            </>
                         ) : (
                             <h5>No border countries</h5>
                         )}
                     </div>
                 </div>
             ))}
-           
+
         </div>
     );
 };

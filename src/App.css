@@ -2,6 +2,14 @@
   font-family: 'Nunito Sans', sans-serif;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+}
+
 .light {
   --text-color: hsl(200, 15%, 8%);
   --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
@@ -21,18 +29,34 @@
   color: var(--text-color);
   background-color: var(--background-color);
 }
-
-.header {
+.App {
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  line-height: 70px;
+  flex-direction: column;
+}
+
+body.dark {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+}
+.header {
   box-shadow: var(--box-shadow);
   background-color: var(--background-color-element);
   margin-bottom: 4rem;
 }
 
-.header h4 {
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
+  height: 70px;
+}
+
+.header h6 {
   font-weight: 600;
   color: var(--text-color);
 }
