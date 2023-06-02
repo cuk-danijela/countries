@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "countries-87c11"
-  }
+    "default": "countries-87c11",
+    "countries": "countries-87c11"
+  },
+  "targets": {},
+  "etags": {}
 }
