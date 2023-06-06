@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Frontend Mentor - REST Countries API with Color Theme Switcher Solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my solution to the REST Countries API with Color Theme Switcher challenge on Frontend Mentor. Frontend Mentor challenges are a great way to improve your coding skills by building realistic projects. 
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+### The challenge
 
-### `npm start`
+The challenge required implementing the following features:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Display all countries from the REST Countries API on the homepage
+- Implement a search functionality to filter countries by name
+- Implement a filter functionality to filter countries by region
+- Allow users to click on a country to view more detailed information on a separate page
+- Allow users to click through to the border countries on the detail page
+- Implement an optional color theme switcher to toggle between light and dark mode
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Screenshot
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![](./screenshot.jpg)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Solution URL: [Add solution URL here](https://github.com/cuk-danijela/countries)
+- Live Site URL: [Add live site URL here](https://countries-87c11.web.app)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### What I learned
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+While working on this project, I gained experience in implementing the following features:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Fetching data from an API and rendering it dynamically
+- Implementing search and filter functionalities to manipulate the displayed data
+- Creating separate detail pages for individual countries and handling navigation between them
+- Integrating a color theme switcher to provide a customizable user interface
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Here's an example of code I'm proud of, where I implemented the search functionality:
 
-## Learn More
+```
+const handleSearch = (event) => {
+  const searchTerm = event.target.value.toLowerCase();
+  const filteredCountries = countries.filter((country) =>
+    country.name.toLowerCase().includes(searchTerm)
+  );
+  setFilteredCountries(filteredCountries);
+};
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Continued development
 
-### Code Splitting
+In future projects, I would like to further enhance my skills in the following areas:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Improving UI/UX design to create more visually appealing and user-friendly interfaces
+- Enhancing the performance of React applications through code optimization and proper state management
+- Exploring other frontend frameworks and libraries to expand my technical toolkit
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Author
 
-### Making a Progressive Web App
+- Website - [Danijela Cuk](https://cuk-danijela.github.io)
+- Frontend Mentor - [@cuk-danijela](https://www.frontendmentor.io/profile/cuk-danijela)
+- Linkedin - [@danijela-cuk](https://www.linkedin.com/in/danijela-cuk-1990)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Acknowledgments
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I would like to acknowledge Frontend Mentor for providing this challenge and the supportive community of developers who share their solutions and insights.
