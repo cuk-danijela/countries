@@ -15,12 +15,6 @@ The challenge required implementing the following features:
 - Allow users to click through to the border countries on the detail page
 - Implement an optional color theme switcher to toggle between light and dark mode
 
-
-### Screenshot
-
-![](./screenshot.jpg)
-
-
 ### Links
 
 - Solution URL: [Add solution URL here](https://github.com/cuk-danijela/countries)
